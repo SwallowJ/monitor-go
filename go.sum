@@ -1,0 +1,4 @@
+github.com/SwallowJ/loggo v1.0.5 h1:fvj+p/cPI9h/9Za+AD+9yBRJpjzUHUQcDNm3neThf4E=
+github.com/SwallowJ/loggo v1.0.5/go.mod h1:loXBi8f8B4a9QPmpkhuAGacEsErXggDkW7lFKlT+pIw=
+github.com/shirou/gopsutil v3.20.11+incompatible h1:LJr4ZQK4mPpIV5gOa4jCOKOGb4ty4DZO54I4FGqIpto=
+github.com/shirou/gopsutil v3.20.11+incompatible/go.mod h1:5b4v6he4MtMOwMlS0TUMTu2PcXUg8+E1lC7eC3UO/RA=
