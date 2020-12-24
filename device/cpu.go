@@ -2,13 +2,11 @@ package device
 
 import (
 	"context"
-	"github.com/SwallowJ/loggo"
 	"github.com/shirou/gopsutil/v3/cpu"
+	"sync"
 	// "github.com/shirou/gopsutil/process"
 	"time"
 )
-
-var logger = loggo.New("main")
 
 //CPUInfo 信息
 type CPUInfo struct {
@@ -28,10 +26,11 @@ type CPUInfo struct {
 	GuestNice float64 `json:"guestNice"`
 }
 
-//GetCputInfo 获取cpu信息
-func GetCputInfo(ctx context.Context) {
+func saveCPUInfo(ctx context.Context, wg *sync.WaitGroup) {
 
-	Info := &CPUInfo{}
+	defer wg.Done()
+
+	info := &CPUInfo{}
 
 	cors, err := cpu.CountsWithContext(ctx, false)
 	if err != nil {
@@ -53,13 +52,13 @@ func GetCputInfo(ctx context.Context) {
 		logger.Error(err)
 	}
 
-	logger.Info(times)
+	info.Cors = cors
+	info.Logical = logical
+	info.Percent = percent[0]
+	info.CPU = times[0].CPU
 
-	Info.Cors = cors
-	Info.Logical = logical
-	logger.Info("核心数：", cors)
-	logger.Info("线程数：", logical)
-	logger.Info("使用率：", percent[0])
+	logger.Info(times)
+	logger.Info(info)
 
 	// proce, _ := process.NewProcess()
 }

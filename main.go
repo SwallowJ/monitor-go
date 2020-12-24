@@ -21,18 +21,5 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// getCputInfo(ctx)
-	// device.GetCputInfo(ctx)
-	wg.Add(1)
-	go test(ctx)
-
-	wg.Wait()
-}
-
-func test(ctx context.Context) {
-	defer wg.Done()
-
-	// for i := 0; i < 100; i++ {
-	// }
-	device.GetCputInfo(ctx)
+	device.StartMonitor(ctx)
 }
