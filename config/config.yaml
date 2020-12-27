@@ -14,4 +14,4 @@ clickhouse:
     host: 192.168.31.123
     port: 9000
     database: monitor
-    nums: 1000
+    nums: 100

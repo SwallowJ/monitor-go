@@ -76,8 +76,6 @@ func saveNetInfo(ctx context.Context, wg *sync.WaitGroup) {
 				return
 			}
 
-			time.Sleep(time.Duration(conf.Config.Interval) * time.Second)
-
 			count++
 			if count == conf.Config.Clickhouse.Nums {
 				if err := tx.Commit(); err != nil {
